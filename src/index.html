@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>carouselTailwind</title>
+    <link href="./output.css" rel="stylesheet" />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="font-proxima">
+    <div
+      x-data="sliderComponent()"
+      x-init="init"
+      class="relative [&::-webkit-scrollbar]:h-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:rounded-none [scrollbar-width:thin] [scrollbar-color:#000_transparent]"
+    >
+      <button
+        class="prev z-10 absolute text-black bg-white rounded-none border-2 border-solid border-[#f2f2f2] w-12 h-12 cursor-pointer top-1/2 -translate-y-1/2 before:content-[''] before:inline-block before:w-[15px] before:h-[15px] before:bg-[url('../arrow-left.svg')] before:bg-cover before:bg-no-repeat left-2 hover:border-black disabled:hidden"
+        aria-label="Scroll left"
+        @click="handleNavigation('left')"
+        :disabled="leftDisabled"
+      ></button>
+      <ul
+        class="flex gap-4 ml-4 pt-12 overflow-x-auto snap-x scroll-smooth pb-4 pl-0 list-none scrollbar-firefox"
+      >
+        <li
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[115px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+        <li
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[147px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+        <li
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[115px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+        <li
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[115px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+      </ul>
+      <button
+        class="next flex justify-center items-center z-10 text-black bg-white rounded-none border-2 border-solid border-[#f2f2f2] w-12 h-12 cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 before:content-[''] before:inline-block before:w-[15px] before:h-[15px] before:bg-[url('../arrow-right.svg')] before:bg-cover before:bg-no-repeat hover:border-black disabled:hidden"
+        aria-label="Scroll right"
+        @click="handleNavigation('right')"
+        :disabled="rightDisabled"
+      ></button>
+    </div>
+    <script>
+      function sliderComponent() {
+        return {
+          slider: null,
+          container: null,
+          items: [],
+          firstItem: null,
+          lastItem: null,
+          gap: 0,
+          leftDisabled: true,
+          rightDisabled: false,
+          observer: null,
+
+          init() {
+            this.slider = this.$el.querySelector("ul");
+            this.container = this.$el.querySelector(".slider-container");
+            this.items = this.slider.querySelectorAll("li");
+
+            if (!this.items.length) return;
+
+            this.firstItem = this.items[0];
+            this.lastItem = this.items[this.items.length - 1];
+
+            this.gap = Math.round(
+              (this.slider.scrollWidth - this.firstItem.clientWidth) /
+                (this.items.length - 1) -
+                this.firstItem.clientWidth
+            );
+
+            this.observer = new IntersectionObserver(
+              this.observeCallback.bind(this),
+              {
+                root: this.container,
+                threshold: 0.9,
+              }
+            );
+
+            this.observer.observe(this.firstItem);
+            this.observer.observe(this.lastItem);
+
+            this.items.forEach((card) =>
+              card.addEventListener("click", this.onCardClick)
+            );
+          },
+
+          onCardClick(e) {
+            const link = e.currentTarget.querySelector("a");
+            if (link) {
+              location = link;
+            }
+          },
+
+          handleNavigation(direction) {
+            const itemWidth = this.firstItem.offsetWidth + this.gap;
+            this.slider.scrollLeft +=
+              direction === "right" ? itemWidth : -itemWidth;
+          },
+
+          observeCallback(entries) {
+            entries.forEach((entry) => {
+              if (entry.target === this.firstItem) {
+                this.leftDisabled = entry.isIntersecting;
+              }
+
+              if (entry.target === this.lastItem) {
+                this.rightDisabled = entry.isIntersecting;
+              }
+            });
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

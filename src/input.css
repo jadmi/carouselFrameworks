@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+li:has(a:focus) {
+  outline: 2px solid dodgerblue;
+  outline-offset: -3px;
+  border-radius: 8px;
+}
+
+@font-face {
+  font-family: "ProximaVara";
+  src: url("../proxima_vara.ttf") format("truetype");
+}
