@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>carouselTailwind</title>
     <link href="./output.css" rel="stylesheet" />
+    <!-- Alpine Plugins -->
     <script
       defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
   </head>
   <body class="font-proxima">
@@ -179,7 +186,7 @@
             this.container = this.$refs.container;
             this.items = this.$refs.slider.querySelectorAll("li");
 
-            if (!this.items.length) return; // mogelijk niet nodig want altijd items?
+            if (!this.items.length) return;
 
             this.firstItem = this.items[0];
             this.lastItem = this.items[this.items.length - 1];
