@@ -14,7 +14,8 @@
     <div
       x-data="sliderComponent()"
       x-init="init"
-      class="relative [&::-webkit-scrollbar]:h-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:rounded-none [scrollbar-width:thin] [scrollbar-color:#000_transparent]"
+      x-ref="container"
+      class="relative"
     >
       <button
         class="prev z-10 absolute text-black bg-white rounded-none border-2 border-solid border-[#f2f2f2] w-12 h-12 cursor-pointer top-1/2 -translate-y-1/2 before:content-[''] before:inline-block before:w-[15px] before:h-[15px] before:bg-[url('../arrow-left.svg')] before:bg-cover before:bg-no-repeat left-2 hover:border-black disabled:hidden"
@@ -23,10 +24,12 @@
         :disabled="leftDisabled"
       ></button>
       <ul
-        class="flex gap-4 ml-4 pt-12 overflow-x-auto snap-x scroll-smooth pb-4 pl-0 list-none scrollbar-firefox"
+        x-ref="slider"
+        class="flex gap-4 ml-4 pt-12 overflow-x-auto snap-x scroll-smooth pb-4 pl-0 list-none [&::-webkit-scrollbar]:h-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:[border-radius:0px] [scrollbar-width:thin] [scrollbar-color:#000_transparent] scrollbar-firefox"
       >
         <li
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[115px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          @click="onCardClick"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -44,7 +47,7 @@
           >
         </li>
         <li
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[147px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -62,7 +65,7 @@
           >
         </li>
         <li
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[115px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -80,7 +83,61 @@
           >
         </li>
         <li
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 xs374:basis-[20%] xs374:min-w-[115px] xs374:shrink-0 xs390:basis-[30.3%] xs390:min-w-[120px] xs390:shrink-0 md:basis-[23.3%] md:shrink-0 xl:basis-[15.3%] xl:shrink-0 xxl1791:basis-[16.8%] xxl1791:shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+        <li
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+        <li
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+        <li
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -109,7 +166,6 @@
       function sliderComponent() {
         return {
           slider: null,
-          container: null,
           items: [],
           firstItem: null,
           lastItem: null,
@@ -119,11 +175,11 @@
           observer: null,
 
           init() {
-            this.slider = this.$el.querySelector("ul");
-            this.container = this.$el.querySelector(".slider-container");
-            this.items = this.slider.querySelectorAll("li");
+            this.slider = this.$refs.slider;
+            this.container = this.$refs.container;
+            this.items = this.$refs.slider.querySelectorAll("li");
 
-            if (!this.items.length) return;
+            if (!this.items.length) return; // mogelijk niet nodig want altijd items?
 
             this.firstItem = this.items[0];
             this.lastItem = this.items[this.items.length - 1];
@@ -137,17 +193,13 @@
             this.observer = new IntersectionObserver(
               this.observeCallback.bind(this),
               {
-                root: this.container,
+                root: this.$refs.container,
                 threshold: 0.9,
               }
             );
 
             this.observer.observe(this.firstItem);
             this.observer.observe(this.lastItem);
-
-            this.items.forEach((card) =>
-              card.addEventListener("click", this.onCardClick)
-            );
           },
 
           onCardClick(e) {
