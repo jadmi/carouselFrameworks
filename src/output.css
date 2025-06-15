@@ -606,6 +606,10 @@ video {
   }
 }
 
+.visible {
+  visibility: visible;
+}
+
 .absolute {
   position: absolute;
 }
@@ -1007,6 +1011,10 @@ li:has(a:focus) {
     min-width: 120px;
   }
 
+  .xs390\:min-w-\[152px\] {
+    min-width: 152px;
+  }
+
   .xs390\:flex-\[0_0_30\.3\%\] {
     flex: 0 0 30.3%;
   }
@@ -1069,6 +1077,10 @@ li:has(a:focus) {
 .\[\&\:\:-webkit-scrollbar-thumb\]\:bg-black::-webkit-scrollbar-thumb {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.\[\&\:\:-webkit-scrollbar-thumb\]\:\[border-radius\:0px\]::-webkit-scrollbar-thumb {
+  border-radius: 0px;
 }
 
 .\[\&\:\:-webkit-scrollbar-track\]\:bg-transparent::-webkit-scrollbar-track {
