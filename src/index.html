@@ -25,19 +25,20 @@
       class="relative"
     >
       <button
+        x-show="!leftDisabled"
         class="prev z-10 absolute text-black bg-white rounded-none border-2 border-solid border-[#f2f2f2] w-12 h-12 cursor-pointer top-1/2 -translate-y-1/2 before:content-[''] before:inline-block before:w-[15px] before:h-[15px] before:bg-[url('../arrow-left.svg')] before:bg-cover before:bg-no-repeat left-2 hover:border-black disabled:hidden"
         aria-label="Scroll left"
         @click="handleNavigation('left')"
-        :disabled="leftDisabled"
       ></button>
       <ul
         x-ref="slider"
         class="flex gap-4 ml-4 pt-12 overflow-x-auto snap-x scroll-smooth pb-4 pl-0 list-none [&::-webkit-scrollbar]:h-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:[border-radius:0px] [scrollbar-width:thin] [scrollbar-color:#000_transparent] scrollbar-firefox"
       >
-        >
         <li
+          x-ref="firstItem"
           @click="onCardClick"
-          x-intersect:enter.threshold.90="console.log('First item entered')"
+          x-intersect:enter.threshold.9="leftDisabled = true"
+          x-intersect:leave.threshold.9="leftDisabled = false"
           class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
@@ -170,10 +171,11 @@
           >
         </li>
         <li
+          x-ref="lastItem"
           @click="onCardClick"
           class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          x-intersect:enter="rightDisabled = true"
-          x-intersect:leave="rightDisabled = false"
+          x-intersect:enter.threshold.9="rightDisabled = true"
+          x-intersect:leave.threshold.9="rightDisabled = false"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -202,40 +204,28 @@
       function sliderComponent() {
         return {
           slider: null,
-          items: [],
           firstItem: null,
           lastItem: null,
           gap: 0,
           leftDisabled: true,
           rightDisabled: false,
-          observer: null,
 
           init() {
             this.slider = this.$refs.slider;
-            this.container = this.$refs.container;
-            this.items = this.$refs.slider.querySelectorAll("li");
+            this.firstItem = this.$refs.firstItem;
+            this.lastItem = this.$refs.lastItem;
 
-            if (!this.items.length) return;
+            const itemCount = this.slider.children.length;
+            if (!itemCount) return;
 
-            this.firstItem = this.items[0];
-            this.lastItem = this.items[this.items.length - 1];
+            // this.firstItem = this.items[0];
+            // this.lastItem = this.items[this.items.length - 1];
 
             this.gap = Math.round(
               (this.slider.scrollWidth - this.firstItem.clientWidth) /
                 (this.items.length - 1) -
                 this.firstItem.clientWidth
             );
-
-            this.observer = new IntersectionObserver(
-              this.observeCallback.bind(this),
-              {
-                root: this.$refs.container,
-                threshold: 0.9,
-              }
-            );
-
-            this.observer.observe(this.firstItem);
-            this.observer.observe(this.lastItem);
           },
 
           onCardClick(e) {
@@ -249,18 +239,6 @@
             const itemWidth = this.firstItem.offsetWidth + this.gap;
             this.slider.scrollLeft +=
               direction === "right" ? itemWidth : -itemWidth;
-          },
-
-          observeCallback(entries) {
-            entries.forEach((entry) => {
-              if (entry.target === this.firstItem) {
-                this.leftDisabled = entry.isIntersecting;
-              }
-
-              if (entry.target === this.lastItem) {
-                this.rightDisabled = entry.isIntersecting;
-              }
-            });
           },
         };
       }
