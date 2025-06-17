@@ -22,7 +22,7 @@
       x-data="sliderComponent()"
       x-init="init"
       x-ref="container"
-      class="relative"
+      class="relative max-w-[1920px]"
     >
       <button
         x-show="!leftDisabled"
@@ -39,7 +39,26 @@
           @click="onCardClick"
           x-intersect:enter.threshold.9="leftDisabled = true"
           x-intersect:leave.threshold.9="leftDisabled = false"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+          <span class="selector block font-normal not-italic text-base mb-5"
+            >3 varianten</span
+          >
+          <a
+            href="https://all4running.nl"
+            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+          >
+            Nike Vaporfly 4 Proto heren</a
+          >
+          <span
+            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+            >€259,95</span
+          >
+        </li>
+        <li
+          @click="onCardClick"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -58,7 +77,7 @@
         </li>
         <li
           @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -77,7 +96,7 @@
         </li>
         <li
           @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -96,7 +115,7 @@
         </li>
         <li
           @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -115,7 +134,7 @@
         </li>
         <li
           @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -134,26 +153,7 @@
         </li>
         <li
           @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
           <span class="block font-normal not-italic text-base mb-5"
@@ -173,7 +173,7 @@
         <li
           x-ref="lastItem"
           @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] xs374:flex-[0_0_20%] xs374:min-w-[147px] xs390:flex-[0_0_30.3%] xs390:min-w-[152px] md:flex-[0_0_23.3%] xl:flex-[0_0_15.3%] xxl1791:flex-[0_0_16.8%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           x-intersect:enter.threshold.9="rightDisabled = true"
           x-intersect:leave.threshold.9="rightDisabled = false"
         >
@@ -218,17 +218,18 @@
             const itemCount = this.slider.children.length;
             if (!itemCount) return;
 
-            // this.firstItem = this.items[0];
-            // this.lastItem = this.items[this.items.length - 1];
-
             this.gap = Math.round(
               (this.slider.scrollWidth - this.firstItem.clientWidth) /
-                (this.items.length - 1) -
+                (this.slider.children.length - 1) -
                 this.firstItem.clientWidth
             );
           },
 
           onCardClick(e) {
+            if (e.target.matches(".selector")) {
+              return;
+            }
+
             const link = e.currentTarget.querySelector("a");
             if (link) {
               location = link;
