@@ -211,16 +211,17 @@
           rightDisabled: false,
 
           init() {
-            this.slider = this.$refs.slider;
-            this.firstItem = this.$refs.firstItem;
-            this.lastItem = this.$refs.lastItem;
+            const itemCount = this.$refs.slider.children.length;
+            if (!itemCount) {
+              return;
+            }
 
-            const itemCount = this.slider.children.length;
-            if (!itemCount) return;
+            this.firstItem = this.$refs.slider.children[0];
+            this.lastItem = this.$refs.slider[itemCount - 1];
 
             this.gap = Math.round(
-              (this.slider.scrollWidth - this.firstItem.clientWidth) /
-                (this.slider.children.length - 1) -
+              (this.$refs.slider.scrollWidth - this.firstItem.clientWidth) /
+                (this.$refs.slider.children.length - 1) -
                 this.firstItem.clientWidth
             );
           },
@@ -238,9 +239,29 @@
 
           handleNavigation(direction) {
             const itemWidth = this.firstItem.offsetWidth + this.gap;
-            this.slider.scrollLeft +=
+            this.$refs.slider.scrollLeft +=
               direction === "right" ? itemWidth : -itemWidth;
           },
+
+          // handleLeft() {
+          //   const itemWidth = this.firstItem.offsetWidth + this.gap;
+          //   this.slider.scrollLeft -= itemWidth;
+          // },
+
+          // handleRight() {
+          //   const itemWidth = this.firstItem.offsetWidth + this.gap;
+          //   this.slider.scrollLeft += itemWidth;
+          // },
+
+          // handleNavigation(direction) {
+          //   const itemWidth = this.firstItem.offsetWidth + this.gap;
+
+          //   if (direction === "right") {
+          //     this.$refs.slider.scrollLeft += itemWidth;
+          //   } else if (direction === "left") {
+          //     this.$refs.slider.scrollLeft -= itemWidth;
+          //   }
+          // },
         };
       }
     </script>
