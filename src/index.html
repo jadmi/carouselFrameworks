@@ -18,185 +18,48 @@
     ></script>
   </head>
   <body class="font-proxima">
-    <div
-      x-data="sliderComponent()"
-      x-init="init"
-      x-ref="container"
-      class="relative max-w-[1920px]"
-    >
+    <div x-data="sliderComponent()" class="relative max-w-[1920px]">
       <button
         x-show="!leftDisabled"
         class="prev z-10 absolute text-black bg-white rounded-none border-2 border-solid border-[#f2f2f2] w-12 h-12 cursor-pointer top-1/2 -translate-y-1/2 before:content-[''] before:inline-block before:w-[15px] before:h-[15px] before:bg-[url('../arrow-left.svg')] before:bg-cover before:bg-no-repeat left-2 hover:border-black disabled:hidden"
-        aria-label="Scroll left"
+        aria-hidden="true"
+        tabindex="-1"
         @click="handleNavigation('left')"
       ></button>
       <ul
-        x-ref="slider"
         class="flex gap-4 ml-4 pt-12 overflow-x-auto snap-x scroll-smooth pb-4 pl-0 list-none [&::-webkit-scrollbar]:h-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:[border-radius:0px] [scrollbar-width:thin] [scrollbar-color:#000_transparent] scrollbar-firefox"
       >
-        <li
-          x-ref="firstItem"
-          @click="onCardClick"
-          x-intersect:enter.threshold.9="leftDisabled = true"
-          x-intersect:leave.threshold.9="leftDisabled = false"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="selector block font-normal not-italic text-base mb-5"
-            >3 varianten</span
+        <template x-for="(item, index) in items" :key="index">
+          <li
+            @click="onCardClick"
+            x-intersect:enter.threshold.9="handleIntersect(index, true)"
+            x-intersect:leave.threshold.9="handleIntersect(index, false)"
+            class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
-        <li
-          x-ref="lastItem"
-          @click="onCardClick"
-          class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          x-intersect:enter.threshold.9="rightDisabled = true"
-          x-intersect:leave.threshold.9="rightDisabled = false"
-        >
-          <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
-          <span class="block font-normal not-italic text-base mb-5"
-            >3 varianten</span
-          >
-          <a
-            href="https://all4running.nl"
-            class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
-          >
-            Nike Vaporfly 4 Proto heren</a
-          >
-          <span
-            class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
-            >€259,95</span
-          >
-        </li>
+            <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+            <span
+              x-text="`${item.variants} varianten`"
+              class="selector block font-normal not-italic text-base mb-5"
+            ></span>
+            <a
+              href="https://all4running.nl"
+              class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
+              x-text="item.name"
+            >
+              Nike Vaporfly 4 Proto heren</a
+            >
+            <span
+              class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
+              x-text="item.price"
+            ></span>
+          </li>
+        </template>
       </ul>
       <button
         x-show="!rightDisabled"
         class="next flex justify-center items-center z-10 text-black bg-white rounded-none border-2 border-solid border-[#f2f2f2] w-12 h-12 cursor-pointer absolute top-1/2 -translate-y-1/2 right-2 before:content-[''] before:inline-block before:w-[15px] before:h-[15px] before:bg-[url('../arrow-right.svg')] before:bg-cover before:bg-no-repeat hover:border-black disabled:hidden"
-        aria-label="Scroll right"
+        aria-hidden="true"
+        tabindex="-1"
         @click="handleNavigation('right')"
       ></button>
     </div>
@@ -210,26 +73,66 @@
           leftDisabled: true,
           rightDisabled: false,
 
+          items: [
+            {
+              name: "Nike Vaporfly 4 Proto dames",
+              price: "€100,95",
+              variants: 3,
+            },
+            {
+              name: "Nike Vaporfly 4 Proto dames",
+              price: "€200,95",
+              variants: 3,
+            },
+            {
+              name: "Nike Vaporfly 4 Proto dames",
+              price: "€300,95",
+              variants: 3,
+            },
+            {
+              name: "Nike Vaporfly 4 Proto dames",
+              price: "€400,95",
+              variants: 3,
+            },
+            {
+              name: "Nike Vaporfly 4 Proto dames",
+              price: "€500,95",
+              variants: 3,
+            },
+            {
+              name: "Nike Vaporfly 4 Proto dames",
+              price: "€600,95",
+              variants: 3,
+            },
+            {
+              name: "Nike Vaporfly 4 Proto dames",
+              price: "€700,95",
+              variants: 3,
+            },
+          ],
+
           init() {
-            const itemCount = this.$refs.slider.children.length;
-            if (!itemCount) {
-              return;
-            }
+            this.$nextTick(() => {
+              const slider = document.querySelector("ul");
 
-            this.firstItem = this.$refs.slider.children[0];
-            this.lastItem = this.$refs.slider[itemCount - 1];
+              this.slider = slider;
+              this.firstItem = slider.firstElementChild;
+              this.lastItem = slider.lastElementChild;
 
-            this.gap = Math.round(
-              (this.$refs.slider.scrollWidth - this.firstItem.clientWidth) /
-                (this.$refs.slider.children.length - 1) -
-                this.firstItem.clientWidth
-            );
+              const itemCount = slider.children.length;
+              if (itemCount < 2) {
+                return;
+              }
+
+              this.gap = Math.round(
+                (slider.scrollWidth - this.firstItem.clientWidth) /
+                  (itemCount - 1) -
+                  this.firstItem.clientWidth
+              );
+            });
           },
-
           onCardClick(e) {
-            if (e.target.matches(".selector")) {
-              return;
-            }
+            if (e.target.matches(".selector")) return;
 
             const link = e.currentTarget.querySelector("a");
             if (link) {
@@ -237,32 +140,17 @@
             }
           },
 
-          handleNavigation(direction) {
-            const itemWidth = this.firstItem.offsetWidth + this.gap;
-            this.$refs.slider.scrollLeft +=
-              direction === "right" ? itemWidth : -itemWidth;
+          handleIntersect(index, isEntering) {
+            this.leftDisabled = index === 0 ? isEntering : this.leftDisabled;
+            this.rightDisabled =
+              index === this.items.length - 1 ? isEntering : this.rightDisabled;
           },
 
-          // handleLeft() {
-          //   const itemWidth = this.firstItem.offsetWidth + this.gap;
-          //   this.slider.scrollLeft -= itemWidth;
-          // },
-
-          // handleRight() {
-          //   const itemWidth = this.firstItem.offsetWidth + this.gap;
-          //   this.slider.scrollLeft += itemWidth;
-          // },
-
-          // handleNavigation(direction) {
-          //   const itemWidth = this.firstItem.offsetWidth + this.gap;
-
-          //   if (direction === "right") {
-          //     this.$refs.slider.scrollLeft += itemWidth;
-          //   } else if (direction === "left") {
-          //     this.$refs.slider.scrollLeft -= itemWidth;
-          //   }
-          // },
-          // commit
+          handleNavigation(direction) {
+            const itemWidth = this.firstItem.offsetWidth + this.gap;
+            this.slider.scrollLeft +=
+              direction === "right" ? itemWidth : -itemWidth;
+          },
         };
       }
     </script>
