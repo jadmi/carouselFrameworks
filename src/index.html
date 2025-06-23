@@ -28,15 +28,25 @@
       ></button>
       <ul
         class="flex gap-4 ml-4 pt-12 overflow-x-auto snap-x scroll-smooth pb-4 pl-0 list-none [&::-webkit-scrollbar]:h-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-black [&::-webkit-scrollbar-thumb]:[border-radius:0px] [scrollbar-width:thin] [scrollbar-color:#000_transparent] scrollbar-firefox"
+        x-ref="slider"
+        @pointerdown="handleDown"
+        @pointerleave="handleLeave"
+        @pointerup="handleUp"
+        @pointermove="handleMove"
       >
         <template x-for="(item, index) in items" :key="index">
           <li
             @click="onCardClick"
             x-intersect:enter.threshold.9="handleIntersect(index, true)"
             x-intersect:leave.threshold.9="handleIntersect(index, false)"
-            class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 select-none active:cursor-grabbing"
           >
-            <img src="../img/sch.png" alt="Nike Vaporfly" class="w-full" />
+            <img
+              src="../img/sch.png"
+              alt="Nike Vaporfly"
+              class="w-full"
+              draggable="false"
+            />
             <span
               x-text="`${item.variants} varianten`"
               class="selector block font-normal not-italic text-base mb-5"
@@ -45,6 +55,7 @@
               href="https://all4running.nl"
               class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
               x-text="item.name"
+              draggable="false"
             >
               Nike Vaporfly 4 Proto heren</a
             >
@@ -72,6 +83,11 @@
           gap: 0,
           leftDisabled: true,
           rightDisabled: false,
+          isDown: false,
+          startX: 0,
+          scrollLeft: 0,
+          scrollSpeedFactor: 1.5,
+          dragged: false,
 
           items: [
             {
@@ -113,19 +129,15 @@
 
           init() {
             this.$nextTick(() => {
-              const slider = document.querySelector("ul");
+              this.slider = this.$refs.slider;
+              this.firstItem = this.slider.firstElementChild;
+              this.lastItem = this.slider.lastElementChild;
 
-              this.slider = slider;
-              this.firstItem = slider.firstElementChild;
-              this.lastItem = slider.lastElementChild;
-
-              const itemCount = slider.children.length;
-              if (itemCount < 2) {
-                return;
-              }
+              const itemCount = this.slider.children.length;
+              if (itemCount < 2) return;
 
               this.gap = Math.round(
-                (slider.scrollWidth - this.firstItem.clientWidth) /
+                (this.slider.scrollWidth - this.firstItem.clientWidth) /
                   (itemCount - 1) -
                   this.firstItem.clientWidth
               );
@@ -133,6 +145,7 @@
           },
           onCardClick(e) {
             if (e.target.matches(".selector")) return;
+            if (this.dragged) return;
 
             const link = e.currentTarget.querySelector("a");
             if (link) {
@@ -150,6 +163,33 @@
             const itemWidth = this.firstItem.offsetWidth + this.gap;
             this.slider.scrollLeft +=
               direction === "right" ? itemWidth : -itemWidth;
+          },
+
+          handleDown(e) {
+            this.dragged = false;
+            this.isDown = true;
+            this.startX = e.pageX - this.slider.offsetLeft;
+            this.scrollLeft = this.slider.scrollLeft;
+          },
+
+          handleLeave() {
+            this.isDown = false;
+          },
+
+          handleUp() {
+            this.isDown = false;
+          },
+
+          handleMove(e) {
+            if (!this.isDown) return;
+            e.preventDefault();
+            const x = e.pageX - this.slider.offsetLeft;
+            const walk = (x - this.startX) * this.scrollSpeedFactor;
+            this.slider.scrollLeft = this.scrollLeft - walk;
+
+            if (Math.abs(x - this.startX) > 5) {
+              this.dragged = true;
+            }
           },
         };
       }
