@@ -42,8 +42,8 @@
             class="cursor-pointer snap-start bg-[#f7f7f7] pt-4 pr-4 pb-2 pl-4 min-w-[170px] flex-[0_0_65%] sm:flex-[0_0_35%] lg:flex-[0_0_22%] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 select-none active:cursor-grabbing"
           >
             <img
-              src="../img/sch.png"
-              alt="Nike Vaporfly"
+              :src="item.imgUrl"
+              :alt="item.name"
               class="w-full"
               draggable="false"
             />
@@ -56,9 +56,7 @@
               class="inline-block font-black text-sm italic leading-4 tracking-wide text-transform: uppercase max-w-[90%] mt-2 mb-2 text-inherit no-underline"
               x-text="item.name"
               draggable="false"
-            >
-              Nike Vaporfly 4 Proto heren</a
-            >
+            ></a>
             <span
               class="block -mt-1 mb-0 text-base not-italic font-semibold leading-6"
               x-text="item.price"
@@ -93,36 +91,43 @@
             {
               name: "Nike Vaporfly 4 Proto dames",
               price: "€100,95",
+              imgUrl: "../img/sch.png",
               variants: 3,
             },
             {
               name: "Nike Vaporfly 4 Proto dames",
               price: "€200,95",
+              imgUrl: "../img/sch.png",
               variants: 3,
             },
             {
               name: "Nike Vaporfly 4 Proto dames",
               price: "€300,95",
+              imgUrl: "../img/sch.png",
               variants: 3,
             },
             {
               name: "Nike Vaporfly 4 Proto dames",
               price: "€400,95",
+              imgUrl: "../img/sch.png",
               variants: 3,
             },
             {
               name: "Nike Vaporfly 4 Proto dames",
               price: "€500,95",
+              imgUrl: "../img/sch.png",
               variants: 3,
             },
             {
               name: "Nike Vaporfly 4 Proto dames",
               price: "€600,95",
+              imgUrl: "../img/sch.png",
               variants: 3,
             },
             {
               name: "Nike Vaporfly 4 Proto dames",
               price: "€700,95",
+              imgUrl: "../img/sch.png",
               variants: 3,
             },
           ],
