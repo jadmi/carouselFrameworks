@@ -139,7 +139,9 @@
               this.lastItem = this.slider.lastElementChild;
 
               const itemCount = this.slider.children.length;
-              if (itemCount < 2) return;
+              if (itemCount < 2) {
+                return;
+              }
 
               this.gap = Math.round(
                 (this.slider.scrollWidth - this.firstItem.clientWidth) /
@@ -149,8 +151,12 @@
             });
           },
           onCardClick(e) {
-            if (e.target.matches(".selector")) return;
-            if (this.dragged) return;
+            if (e.target.matches(".selector")) {
+              return;
+            }
+            if (this.dragged) {
+              return;
+            }
 
             const link = e.currentTarget.querySelector("a");
             if (link) {
@@ -186,7 +192,9 @@
           },
 
           handleMove(e) {
-            if (!this.isDown) return;
+            if (!this.isDown) {
+              return;
+            }
             e.preventDefault();
             const x = e.pageX - this.slider.offsetLeft;
             const walk = (x - this.startX) * this.scrollSpeedFactor;
